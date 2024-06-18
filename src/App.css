@@ -1,0 +1,60 @@
+.p-checkbox-box {
+  border: 0.1rem solid #161616;
+}
+.p-sortable-column-icon {
+  color: white !important;
+}
+.bg-header-table {
+  background: linear-gradient(0deg, rgb(51, 98, 255) 0%, rgb(51, 98, 255) 100%);
+}
+/* titleDegradado */
+.title-form {
+  background: linear-gradient(0deg, rgb(20, 63, 255) 0%, rgb(18, 74, 255) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* title del dashboard header */
+.title-common {
+  background: linear-gradient(
+    45deg,
+    rgb(46, 77, 255) 0%,
+    rgb(66, 116, 255) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-options {
+  background: linear-gradient(
+    45deg,
+    rgba(30, 64, 255, 0.404) 0%,
+    rgba(33, 137, 255, 0.486) 100%
+  );
+}
+
+::-webkit-scrollbar {
+  width: 8px; /* Ancho del scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #ffffff;
+}
+/* Color de fondo del track */
+
+::-webkit-scrollbar-thumb {
+  background-color: #74a0ff; /* Color del thumb (la barra misma) */
+  border-radius: 6px; /* Borde redondeado del thumb */
+}
+
+.bg-table-pacientes {
+  background: linear-gradient(
+    180deg,
+    rgba(16, 95, 255, 0.486) 0%,
+    rgba(135, 195, 255, 0.418) 100%
+  );
+}
+
+.bg-list-espera {
+  background: linear-gradient(180deg, #1768ff, #1a90ff);
+}

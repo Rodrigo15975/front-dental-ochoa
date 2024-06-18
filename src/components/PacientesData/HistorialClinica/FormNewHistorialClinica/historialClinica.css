@@ -1,0 +1,7 @@
+.bg-clinica {
+  background: linear-gradient(
+    45deg,
+    rgba(48, 128, 255, 1) 0%,
+    rgb(35, 49, 255) 100%
+  );
+}

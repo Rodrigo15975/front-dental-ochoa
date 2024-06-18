@@ -1,0 +1,194 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  min-height: 100vh;
+  font-family: "Roboto Slab", serif;
+  overflow-x: hidden;
+}
+
+.p-checkbox-input {
+  height: 100% !important ;
+  width: 100% !important ;
+}
+
+.button-edit {
+  background: linear-gradient(
+    45deg,
+    rgb(20, 75, 255) 0%,
+    rgb(25, 67, 255) 100%
+  );
+}
+
+.active {
+  background: linear-gradient(
+    45deg,
+    rgb(46, 77, 255) 0%,
+    rgb(66, 116, 255) 100%
+  );
+  color: white !important;
+}
+.text-inputs-gradients {
+  background: linear-gradient(
+    45deg,
+    rgba(0, 99, 255, 1) 0%,
+    rgba(134, 168, 255, 1) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.buttons-open-modal {
+  background: linear-gradient(45deg, #0063ff 0%, #0063ff 100%);
+}
+.buttons-asignar {
+  background: linear-gradient(45deg, #c5fff7 0%, #b4ffe6 100%);
+}
+
+/* clinica dental ochoa */
+.text-gradient-sidebar-bar {
+  background: linear-gradient(
+    45deg,
+    rgb(111, 142, 255) 0%,
+    rgb(3, 57, 255) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.rbc-active {
+  background: linear-gradient(
+    45deg,
+    rgb(37, 106, 255) 0%,
+    rgb(9, 112, 247) 100%
+  ) !important;
+  color: white !important;
+}
+.rbc-header {
+  background-color: rgb(74, 101, 255);
+  color: white;
+  height: 3rem;
+}
+
+.rbc-day-slot {
+  border: none;
+}
+.rbc-timeslot-group {
+  border: none;
+  border: 0.001rem solid #386dff27;
+}
+
+.rbc-label {
+  font-weight: bolder;
+}
+
+.rbc-btn-group button {
+  border: none;
+  font-weight: bolder;
+  border: 0.1rem solid #184eff;
+  background-color: rgb(255, 255, 255);
+}
+.rbc-toolbar-label {
+  font-weight: bolder;
+}
+
+.rbc-allday-cell {
+  display: none;
+}
+
+.rbc-header {
+  background-color: #1b6afc;
+  color: white;
+  padding: 1rem;
+  font-size: 1rem;
+}
+.rbc-event {
+  padding: 0 !important;
+}
+.rbc-event-label {
+  display: none !important;
+}
+
+.rbc-timeslot-group {
+  min-height: 120px !important;
+}
+
+.rbc-time-slot {
+  border-bottom: 1px double #1f35ff15 !important;
+}
+
+.rbc-time-slot:hover {
+  /* cursor: pointer !important; */
+  background-color: #1b6afc1f;
+  transition: background-color 0.2s !important;
+}
+
+.rbc-event,
+.rbc-background-event {
+  z-index: 2;
+  padding: 0 !important;
+  border: none !important;
+}
+
+.rbc-slot-selection {
+  background: #88ffa263 !important;
+  color: rgb(29, 28, 28) !important;
+  font-weight: 800;
+  cursor: pointer !important;
+  position: absolute !important;
+}
+
+.rbc-event {
+  padding: 0px !important;
+  border-radius: 0px !important;
+  border: none !important;
+  background-color: transparent !important;
+  z-index: 2;
+  position: relative;
+}
+
+.rbc-background-event {
+  padding: 0px !important;
+  border-radius: 0px !important;
+  border: none !important;
+  background-color: transparent !important;
+}
+
+.rbc-event-label {
+  display: none !important;
+}
+
+.rbc-events-container {
+  width: 100% !important;
+}
+
+.rbc-timeslot-group {
+  min-height: 120px !important;
+}
+
+.rbc-day-slot .rbc-time-slot:after {
+  content: "";
+  width: 100%;
+  display: block;
+}
+
+.rbc-time-slot {
+  z-index: 1;
+}
+
+.rbc-addons-dnd-resizable {
+  height: 100%;
+  width: 100%;
+}
+
+.hidden-scroll {
+  overflow: hidden !important;
+}
+
+.rbc-time-content {
+  padding-right: 0.3rem !important;
+}

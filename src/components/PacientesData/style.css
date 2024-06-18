@@ -1,0 +1,7 @@
+.pacientes-data {
+  background: linear-gradient(
+    45deg,
+    rgba(130, 192, 255, 0.167) 0%,
+    rgba(211, 255, 242, 0.256) 100%
+  );
+}
