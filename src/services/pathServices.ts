@@ -3,7 +3,6 @@ export const enum PathServices {
 
   LOGIN = "/auth/login",
   LOGOUT = "/auth/logout",
-
   ACCESSTOKEN = "/auth/verify",
 
   CONSULTORIOFILELOGO = "/consultorio/logo",

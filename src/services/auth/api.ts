@@ -9,7 +9,9 @@ import {
 import { PathServices } from "../pathServices";
 
 export const loginAuth = async (data: LoginAuth) =>
-  await useMethods.POST<PropsCookies, LoginAuth>(PathServices.LOGIN, data);
+  await useMethods.POST<PropsCookies, LoginAuth>(PathServices.LOGIN, data, {
+    withCredentials: true,
+  });
 
 // si no pongo credenciales, salkdra algo inesperado sucedio
 // y si pones directo en el method, no podras hacer llamada a la api ya que no estaras mandando

@@ -12,7 +12,7 @@ const HistoryAsistaneciMedicos = (data: GetAllMedicos) => {
 
   return (
     <>
-      <CommonTooltip title="Historial" position="rightBottom">
+      <CommonTooltip title="" position="rightBottom">
         <ButtonIcon
           onClick={openModal}
           className="cursor-pointer flex justify-center items-center"

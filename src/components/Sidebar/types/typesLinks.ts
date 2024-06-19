@@ -7,6 +7,7 @@ export type PropsSidebar = {
   rootStyles?: CSSObject | undefined;
   icon?: string;
   onClickBtn?: () => void;
+  nameEmpresa?: string;
 };
 
 // Links- with- sub-menu

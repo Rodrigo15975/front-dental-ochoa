@@ -51,7 +51,7 @@ const FormArchive = () => {
         validationSchema={validationArchive}
       >
         {({ getFieldProps, setFieldValue }) => (
-          <Form className="flex  gap-2 p-8 justify-between max-lg:flex-wrap">
+          <Form className="flex max-2xl:flex-wrap gap-2 p-8 justify-between max-lg:flex-wrap">
             <div className="flex-[0_1_45rem] border shadow-md">
               <div className="border-b">
                 <p className="text-xl font-robotoSlab_600 bg-bg_six/50 p-3 text-default">

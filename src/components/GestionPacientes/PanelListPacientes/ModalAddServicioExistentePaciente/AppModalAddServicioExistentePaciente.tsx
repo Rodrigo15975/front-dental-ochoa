@@ -14,7 +14,7 @@ const AppModalAddServicioExistentePaciente = () => {
           <Modal
             className="flex-[0_1_100rem] container p-8 rounded-3xl min-h-[90vh] bg-default border"
             type="CENTER"
-            animate="LEFT"
+            animate="OPACITY"
           >
             <div className="max-h-[84vh] overflow-y-auto">
               <TitleExistenteServicesPacientes />

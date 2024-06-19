@@ -47,7 +47,7 @@ export const createServicioPaciente = async (
     costo_total,
     detalles_servicio,
     fecha_atencion,
-    vuelto_restante,
+    // vuelto_restante,
   } = data;
   if (mayorEdad)
     return await createServicioPacienteMayor(
@@ -57,7 +57,7 @@ export const createServicioPaciente = async (
         costo_total,
         detalles_servicio,
         fecha_atencion,
-        vuelto_restante,
+        // vuelto_restante,
       },
       idPaciente
     );

@@ -7,14 +7,13 @@ import { FcCancel } from "react-icons/fc";
 export const ColumnsHistoryAsistenciaMedicos = () => {
   const fechaHistorial = (asistencia: GetAllAsistencia) => (
     <p>
-      {asistencia.fecha} {asistencia.hora}
+      {asistencia.fecha} - {asistencia.hora}
     </p>
   );
 
   const asistenciasHistorial = (asistencia: GetAllAsistencia) => {
     const { asistio } = asistencia;
-    console.log(asistencia);
-    
+
     return (
       <div className="w-full flex">
         {asistencia.asistio ? (

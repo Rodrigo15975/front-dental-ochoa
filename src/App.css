@@ -58,3 +58,12 @@
 .bg-list-espera {
   background: linear-gradient(180deg, #1768ff, #1a90ff);
 }
+
+.table-amounth {
+  background: rgb(59, 198, 255);
+  background: linear-gradient(
+    45deg,
+    rgb(62, 123, 255) 0%,
+    rgb(39, 133, 255) 100%
+  );
+}

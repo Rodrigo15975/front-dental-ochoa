@@ -44,7 +44,7 @@ const AppPanelListGestionPacientes = () => {
             data={data}
             headerClassName="bg-header-table  text-white border-"
             globalFilter={search}
-            row={8}
+            row={5}
             header={header()}
           />
         </div>

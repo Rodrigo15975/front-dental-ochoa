@@ -6,6 +6,9 @@ import CalendarioFormCita from "./calendario/CalendarioFormCita";
 import { useUpdateChangeDateCita } from "@/services/citas/mutation";
 import { Appointment } from "./calendario/types/typeCalendarioCitas";
 import MenuAppointmenCita from "./MenuAppointmenCita";
+import { Modal } from "@/components/Common";
+import LoadingStatic from "@/components/Common/Loading/LoadingStatic";
+import { AnimatePresence } from "framer-motion";
 // import PanelColoresCitas from "./PanelColoresCitas";
 
 const PanelCitas = () => {
@@ -17,14 +20,14 @@ const PanelCitas = () => {
 
   const closeCita = () => setAppointment(undefined);
 
-  const { mutate } = useUpdateChangeDateCita();
+  const { mutate, isPending } = useUpdateChangeDateCita();
   const updateDate = ({ end, start }: Appointment, _id: string) =>
     mutate({ end, start, _id });
 
   const updateForm = (data: GetAllCitas) => setDataAppointment(data);
 
   return (
-    <div className="h-[200vh] justify-between flex p-4">
+    <div className="h-[100vh] justify-between flex p-4">
       <CalendarioCitas
         updateForm={updateForm}
         updateDate={updateDate}
@@ -35,6 +38,18 @@ const PanelCitas = () => {
         appointment={appointment}
         closeAppointment={closeCita}
       />
+      {/* Loading reprogramar cita */}
+      <AnimatePresence>
+        {isPending && (
+          <Modal
+            className="flex-[0_1_20rem] bg-default shadow rounded-md"
+            type="CENTER"
+            animate="OPACITY"
+          >
+            <LoadingStatic />
+          </Modal>
+        )}
+      </AnimatePresence>
       {/* Actualizar formulario de citas */}
       {/* <FormUpdateCita closeForm={closeUpdateForm} data={updateAppointment} /> */}
       {/* Menu sub cita /> */}

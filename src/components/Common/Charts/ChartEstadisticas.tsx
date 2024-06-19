@@ -56,7 +56,7 @@ const ChartEstadisticas = <T,>({
         type={type}
         data={chartData}
         options={chartOptions}
-        className=" flex-[0_1_30rem] h-[25rem]"
+        className=" flex-[0_1_2rem] h-[25rem]"
       />
     </>
   );

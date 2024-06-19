@@ -3,7 +3,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import { createEmpresa, deleteEmpresa, updateEmpresa } from "./api";
 import { PartialEmpresa } from "./types/typeEmpresa";
-import { storeGetDataRuc } from "@/store";
+import { storeConfiguracion, storeGetDataRuc } from "@/store";
 import { netWorkError } from "@/utils/axiosError";
 import { useNavigate } from "react-router-dom";
 import { PathsPublic } from "@/router/enum/routerPaths";
@@ -42,6 +42,8 @@ export const useCreateEmpresa = () => {
 export const useUpdateEmpresa = () => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
+  const { setOpenFormEditConfiguracion } = storeConfiguracion();
+
   return useMutation({
     mutationFn: (data: PartialEmpresa) => updateEmpresa(data),
     onError(error) {
@@ -52,6 +54,7 @@ export const useUpdateEmpresa = () => {
     },
     onSuccess(data) {
       toast.success(data.message);
+      setOpenFormEditConfiguracion();
     },
     onMutate() {
       console.log("mutate");

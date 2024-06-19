@@ -14,8 +14,8 @@ export const useCreateServicioPaciente = (
 ) => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
-
   const { setOpenAddNewServicios } = storeGestionServicios();
+
   return useMutation({
     mutationFn: (data: CreateServicioPaciente) =>
       createServicioPaciente(mayorEdad, data, idPaciente),

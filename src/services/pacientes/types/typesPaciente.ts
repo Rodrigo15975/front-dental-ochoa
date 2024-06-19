@@ -36,6 +36,12 @@ export const enum Estados {
   CONCLUIDO = "concluido",
 }
 
+export const enum FuentesCaptaciones {
+  TIKTOK = "tiktok",
+  INSTAGRAM = "instagram",
+  FACEBOOK = "facebook",
+}
+
 // Omito los datos por que, no me trae los datos de id y los estado y apellids y name
 // ya que solo envia los ids a la hora de registrar los datos
 export interface DetallesServicios
@@ -72,6 +78,7 @@ export type ID = {
 };
 
 export interface GetAllPacientes extends Pacientes {
+  fuenteCaptacion: string;
   _id: string;
 }
 

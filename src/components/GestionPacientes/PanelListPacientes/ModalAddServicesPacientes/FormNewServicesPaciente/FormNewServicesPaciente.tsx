@@ -40,7 +40,7 @@ const FormNewServicesPaciente = () => {
   return (
     <>
       {isPending ? (
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center w-full p-4 items-center">
           <LoadingStatic />
         </div>
       ) : (

@@ -9,12 +9,6 @@ const columnsHistoryPaciente = () => {
       filter: true,
     },
     {
-      field: "vuelto_restante",
-      header: "Vuelto Restante",
-      sortable: true,
-      filter: true,
-    },
-    {
       field: "costo_total",
       header: "Costo Total",
       sortable: true,

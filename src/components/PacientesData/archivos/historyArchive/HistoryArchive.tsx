@@ -6,6 +6,7 @@ import { CiCircleCheck } from "react-icons/ci";
 import { RiFolderHistoryLine } from "react-icons/ri";
 import { useParams } from "react-router-dom";
 import CardHistory from "./CardHistory";
+import { useEffect, useState } from "react";
 
 const HistoryArchive = () => {
   const customizedMarker = () => {
@@ -16,46 +17,19 @@ const HistoryArchive = () => {
     );
   };
 
-  // const events: PropsDate[] = [
-  //   {
-  //     fecha: "18/10/2024",
-  //     icon: "pi pi-shopping-cart",
-  //     color: "#9C27B0",
-  //     image: "game-controller.jpg",
-  //   },
-  //   {
-  //     fecha: "15/10/2020",
-  //     icon: "pi pi-cog",
-  //     color: "#673AB7",
-  //     image: "game-controller.jpg",
-  //   },
-  // ];
-
-  // // intentar hacer reutilizable si no ,dejarlo y hacer todo ahora a mimir
-  // const [filteredData, setFilteredData] = useState<PropsDate[]>([]);
-  // const [date, setDate] = useState<Date | null>(new Date());
-
-  // const filtrarPorFecha = (fecha: Date | null) => {
-  //   const filtered = events.filter((item) =>
-  //     dayjs(item.fecha, "DD/MM/YYYY").isSame(fecha, "day")
-  //   );
-  //   if (filtered.length > 0) {
-  //     setFilteredData(filtered);
-  //     toast.success("Datos encontrados", { toastId: "foundArchive" });
-  //     return;
-  //   }
-  //   toast.warn("No hubo datos", { toastId: "foundArchive" });
-  // };
-
-  // const buscar = () => filtrarPorFecha(date);
-
-  // const onchange = (e: ChangeEvent<HTMLInputElement>) =>
-  //   setDate(dayjs(e.target.value).toDate());
-
-  // const limpiar = () => setFilteredData(events);
-
   const { id } = useParams<ID>();
   const { data } = useGetFindOnePaciente(id ?? "");
+
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 1400);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth >= 1400);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <>
@@ -67,42 +41,13 @@ const HistoryArchive = () => {
           >
             <RiFolderHistoryLine />
           </Typography>
-          {/* <div className="flex gap-2 items-center">
-            <InputText
-              tooltip="Busqueda por fecha"
-              tooltipOptions={{
-                position: "top",
-              }}
-              placeholder="Ejemplo 18/10/2024"
-              onChange={onchange}
-              type="date"
-              className="shadow-md flex-[0_1_15rem] border border-border_three/50 outline-none rounded-lg"
-            />
-
-            <CommonTooltip title="Buscar">
-              <ButtonIcon
-                className="bg-bg_six h-[2rem] cursor-pointer  w-[2rem] rounded-full text-default flex items-center justify-center "
-                onClick={buscar}
-              >
-                <BiSearch />
-              </ButtonIcon>
-            </CommonTooltip>
-            <CommonTooltip title="Restablecer">
-              <ButtonIcon
-                onClick={limpiar}
-                className="bg-bg_three/50  cursor-pointer h-[2rem] w-[2rem] rounded-full flex items-center justify-center gap-2"
-              >
-                <VscDebugRestart />
-              </ButtonIcon>
-            </CommonTooltip>
-          </div> */}
         </div>
 
         <Timeline
           marker={customizedMarker}
           content={CardHistory}
           value={data?.archivos}
-          align="alternate"
+          align={isLargeScreen ? "alternate" : "bottom"}
           className="bg-default shadow-sm font-robotoSlab"
         />
       </div>

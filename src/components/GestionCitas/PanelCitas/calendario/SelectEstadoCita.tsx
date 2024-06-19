@@ -3,11 +3,11 @@ import { useGetServicios } from "@/services/servicios";
 
 export const SelectEstadoCita = () => {
   const { data } = useGetAllEstadosCitas();
-
+  const reservado = data?.filter((stado) => stado.estado === "reservado");
   return (
     <>
       <option value="">Seleccione el estado</option>
-      {data?.slice(0, 1).map((estado) => (
+      {reservado?.map((estado) => (
         <option
           className=" font-robotoSlab_600"
           key={`estado-cita-${estado._id}`}

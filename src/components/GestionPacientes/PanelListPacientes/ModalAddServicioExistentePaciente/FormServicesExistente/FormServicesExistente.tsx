@@ -32,7 +32,7 @@ const FormServicesExistente = () => {
   useEffect(() => {
     notification();
   }, []);
-  if (isPending) return <LoadingStatic />;
+
   return (
     <>
       <Formik
@@ -41,17 +41,25 @@ const FormServicesExistente = () => {
         validationSchema={detalleServicioSchema}
       >
         {({ getFieldProps }) => (
-          <Form className="flex justify-evenly gap-4 mt-10 min-h-[72vh]">
-            <div className="flex-[0_0_20rem] p-4 shadow-lg hover:shadow-none transition hover:border-border_three/50 rounded-lg bg-default border min-h-[20rem]">
-              <ListServicesExistente />
-            </div>
-            <div className="flex-[0_1_70rem] shadow-lg hover:shadow-none transition hover:border-border_three/50 rounded-lg bg-default border min-h-[20rem]">
-              <InputsFormServicesExistente fieldProps={getFieldProps} />
-              <div className="px-4">
-                <Button type="submit" btnStyled="blue" />
+          <>
+            {isPending ? (
+              <div className="flex justify-center w-full p-4 items-center">
+                <LoadingStatic />
               </div>
-            </div>
-          </Form>
+            ) : (
+              <Form className="flex justify-evenly gap-4 mt-10 min-h-[72vh]">
+                <div className="flex-[0_0_20rem] p-4 shadow-lg hover:shadow-none transition hover:border-border_three/50 rounded-lg bg-default border min-h-[20rem]">
+                  <ListServicesExistente />
+                </div>
+                <div className="flex-[0_1_70rem] shadow-lg hover:shadow-none transition hover:border-border_three/50 rounded-lg bg-default border min-h-[20rem]">
+                  <InputsFormServicesExistente fieldProps={getFieldProps} />
+                  <div className="px-4">
+                    <Button type="submit" btnStyled="blue" />
+                  </div>
+                </div>
+              </Form>
+            )}
+          </>
         )}
       </Formik>
     </>

@@ -12,6 +12,7 @@ const SidebarMenu: FC<PropsSidebar> = ({
   rootStyles,
   icon,
   onClickBtn,
+  nameEmpresa,
 }) => {
   const {
     setToggle,
@@ -49,7 +50,7 @@ const SidebarMenu: FC<PropsSidebar> = ({
           height: "100%",
         }}
         // collapsed
-        data-pr-tooltip=""
+        // data-pr-tooltip=""
         collapsed={collapse}
         backgroundColor={screenMobile ? "white" : ""}
         toggled={toggle}
@@ -57,7 +58,7 @@ const SidebarMenu: FC<PropsSidebar> = ({
         rootStyles={{ ...rootStyles }}
         className="min-h-screen shadow-xl"
         // 992px
-        breakPoint="lg"
+        breakPoint="xl"
       >
         <div className="flex flex-col justify-between h-full">
           <div>
@@ -82,7 +83,7 @@ const SidebarMenu: FC<PropsSidebar> = ({
                 " "
               ) : (
                 <p className="text-gradient-sidebar-bar font-robotoSlab_700 p-4 text-center text-xl">
-                  Clinica Dental Ochoa
+                  {nameEmpresa}
                 </p>
               )}
               <p className="text-gradient-sidebar-bar px-[1rem] my-[1rem]">
