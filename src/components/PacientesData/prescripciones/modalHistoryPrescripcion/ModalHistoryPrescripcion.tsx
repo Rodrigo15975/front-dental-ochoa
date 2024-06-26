@@ -73,7 +73,7 @@ const ModalHistoryPrescripcion = () => {
           <Modal
             className="flex-[0_1_80rem] min-h-[80vh] rounded-md border-border_four/80 container bg-default border shadow-md "
             type="CENTER"
-            animate="LEFT"
+            animate="OPACITY"
           >
             <div className="max-h-[90vh] p-4 overflow-y-auto">
               <Table
@@ -82,7 +82,7 @@ const ModalHistoryPrescripcion = () => {
                 columnsConfig={columnsPrescripciones}
                 data={data?.prescripciones}
                 globalFilter={globalFilter}
-                row={8}
+                row={6}
                 header={header()}
               />
             </div>

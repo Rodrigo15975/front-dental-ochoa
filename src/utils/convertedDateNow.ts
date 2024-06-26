@@ -42,3 +42,28 @@ export function formatearFecha(fechaString: string | undefined) {
   // salida 1999-09-20
   return fechaFormateada;
 }
+
+export const esCumpleañosHoy = (fechaNacimiento: string | Date) => {
+  const hoy = dayjs();
+  const cumpleanos = dayjs(fechaNacimiento).year(hoy.year());
+
+  // Si el cumpleaños ya pasó este año, ajustamos al próximo año
+  if (cumpleanos.isBefore(hoy, "day")) {
+    cumpleanos.add(1, "year");
+  }
+
+  return hoy.isSame(cumpleanos, "day");
+};
+
+// Función para calcular los días restantes hasta el próximo cumpleaños
+export const faltaDiasHastaCumpleaños = (fechaNacimiento: string | Date) => {
+  const hoy = dayjs();
+  let cumpleanos = dayjs(fechaNacimiento).year(hoy.year());
+
+  // Si el cumpleaños ya pasó este año, ajustamos al próximo año
+  if (cumpleanos.isBefore(hoy, "day")) {
+    cumpleanos = cumpleanos.add(1, "year");
+  }
+
+  return cumpleanos.diff(hoy, "day");
+};

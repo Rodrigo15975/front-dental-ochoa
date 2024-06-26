@@ -15,8 +15,8 @@ export interface PacienteMayor extends Omit<Persona, "contraseña"> {
 
 export const inputsPacienteMayor: InputDefaultNames[] = [
   { name: "dni", textPlaceHolder: "DNI" },
-  { name: "name", textPlaceHolder: "Nombre" },
-  { name: "apellidos", textPlaceHolder: "Apellidos" },
+  { name: "name", textPlaceHolder: "Nombre", disabled: true },
+  { name: "apellidos", textPlaceHolder: "Apellidos", disabled: true },
   {
     name: "fechaNacimiento",
     textPlaceHolder: "Fecha Nacimiento",

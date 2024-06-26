@@ -12,6 +12,7 @@ const FormPacientesMayorInputs: FC<PropsInputOptional> = ({ fieldProps }) => {
         <Input
           label={input.textPlaceHolder}
           reset
+          disabled={input.disabled}
           labelClassName="font-robotoSlab_400 text-inputs-gradients font-robotoSlab_500"
           className="w-full border border-border_three/15 text-text_primary/90 shadow-md font-robotoSlab_600 p-2 h-[2.5rem] mt-[0.5rem] focus:outline-1 transition-all rounded-md focus:outline-border_three outline"
           AsComPonente={input.Component}

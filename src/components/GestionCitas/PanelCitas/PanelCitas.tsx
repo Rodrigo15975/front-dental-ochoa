@@ -27,34 +27,37 @@ const PanelCitas = () => {
   const updateForm = (data: GetAllCitas) => setDataAppointment(data);
 
   return (
-    <div className="h-[100vh] justify-between flex p-4">
-      <CalendarioCitas
-        updateForm={updateForm}
-        updateDate={updateDate}
-        getCita={getCita}
-      />
-      {/* Modal */}
-      <CalendarioFormCita
-        appointment={appointment}
-        closeAppointment={closeCita}
-      />
-      {/* Loading reprogramar cita */}
-      <AnimatePresence>
-        {isPending && (
-          <Modal
-            className="flex-[0_1_20rem] bg-default shadow rounded-md"
-            type="CENTER"
-            animate="OPACITY"
-          >
-            <LoadingStatic />
-          </Modal>
-        )}
-      </AnimatePresence>
-      {/* Actualizar formulario de citas */}
-      {/* <FormUpdateCita closeForm={closeUpdateForm} data={updateAppointment} /> */}
-      {/* Menu sub cita /> */}
+    <div className="flex w-full ">
+      {/* El calendario no se adpata en 1430px */}
+      <div className="h-[100vh] w-full     justify-between flex p-4">
+        <CalendarioCitas
+          updateForm={updateForm}
+          updateDate={updateDate}
+          getCita={getCita}
+        />
+        {/* Modal */}
+        <CalendarioFormCita
+          appointment={appointment}
+          closeAppointment={closeCita}
+        />
+        {/* Loading reprogramar cita */}
+        <AnimatePresence>
+          {isPending && (
+            <Modal
+              className="flex-[0_1_20rem] bg-default shadow rounded-md"
+              type="CENTER"
+              animate="OPACITY"
+            >
+              <LoadingStatic />
+            </Modal>
+          )}
+        </AnimatePresence>
+        {/* Actualizar formulario de citas */}
+        {/* <FormUpdateCita closeForm={closeUpdateForm} data={updateAppointment} /> */}
+        {/* Menu sub cita /> */}
 
-      <MenuAppointmenCita data={dataAppointment} />
+        <MenuAppointmenCita data={dataAppointment} />
+      </div>
     </div>
   );
 };

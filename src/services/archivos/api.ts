@@ -13,3 +13,11 @@ export const createArchivo = async (
       withCredentials: true,
     }
   );
+
+export const deleteArchivo = async (idDoc: string, idPaciente: string) =>
+  await useMethods.DELETE<Message>(
+    `${PathServices.ARCHIVO}/${idDoc}/${idPaciente}`,
+    {
+      withCredentials: true,
+    }
+  );

@@ -11,6 +11,7 @@ import {
 } from "@/pages";
 import { PathsProtected } from "./enum/routerPaths";
 import { IRouterProtected } from "./types/typeRouter";
+import PageRecordatorio from "@/pages/pageRecordatorio/PageRecordatorio";
 
 // Ingresa tus rutas
 export const routerProtected: IRouterProtected[] = [
@@ -49,5 +50,9 @@ export const routerProtected: IRouterProtected[] = [
   {
     Componente: PageConfiguracion,
     path: PathsProtected.CONFIGURACION,
+  },
+  {
+    Componente: PageRecordatorio,
+    path: PathsProtected.RECORDATORIO,
   },
 ];

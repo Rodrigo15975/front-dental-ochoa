@@ -10,7 +10,7 @@ import ModalListSala from "./listSala/ModalListSala";
 const AppPanelCitas = () => {
   return (
     <>
-      <div className="flex flex-col">
+      <div className="flex flex-col ">
         <Panel
           className="min-h-[0vh] mt-4"
           headerChildren={<ListHeaderCita />}

@@ -18,6 +18,7 @@ export enum PathsProtected {
   HISTORIAL_CLIENTE = PathMenuSidebarLinks.HISTORIAL_CLIENTE,
   HISTORIAL_CITAS = PathMenuSidebarLinks.HISTORIAL_CITAS,
   CONFIGURACION = PathMenuSidebarLinks.CONFIGURACION,
+  RECORDATORIO = PathMenuSidebarLinks.RECORDATORIO,
   REPORTES = PathMenuSidebarLinks.REPORTES,
 }
 

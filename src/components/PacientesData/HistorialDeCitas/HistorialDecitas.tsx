@@ -1,7 +1,7 @@
 import { Typography } from "@/components/Common";
 import ContainerData from "@/components/Common/ContainerData/ContainerData";
+import { FcViewDetails } from "react-icons/fc";
 import HistoryCitas from "./HistoryCitas";
-import { BiDetail } from "react-icons/bi";
 
 const HistorialDecitas = () => {
   return (
@@ -9,10 +9,10 @@ const HistorialDecitas = () => {
       <ContainerData>
         <div className="max-h-[80vh]  w-full flex flex-col overflow-y-auto">
           <Typography
-            className="bg-bg_six flex gap-2 items-center w-full p-2 rounded-md  text-default text-xl"
+            className="p-4 flex items-center gap-2 bg-bg_three/50 mb-4 text-xl text-text_primary/80 rounded-md font-robotoSlab_600"
             label="Historial de citas"
           >
-            <BiDetail className="text-2xl" />
+            <FcViewDetails />
           </Typography>
           <HistoryCitas />
         </div>

@@ -48,8 +48,8 @@ export const inputsPacienteMenor: InputDefaultNames[] = [
 
   // Apoderado
   { name: "apoderado.dni", textPlaceHolder: "DNI" },
-  { name: "apoderado.nombre", textPlaceHolder: "Nombre" },
-  { name: "apoderado.apellidos", textPlaceHolder: "Apellidos" },
+  { name: "apoderado.nombre", textPlaceHolder: "Nombre", disabled: true },
+  { name: "apoderado.apellidos", textPlaceHolder: "Apellidos", disabled: true },
   { name: "apoderado.celular", textPlaceHolder: "Celular" },
   { name: "apoderado.email", textPlaceHolder: "Email" },
   {

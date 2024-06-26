@@ -50,6 +50,7 @@ const ModalListSala = () => {
   const appointInSala = data?.filter(
     (appointments) => appointments.estado.estado === STATUSCITA.EN_SALA
   );
+
   useEffect(() => {
     openModalListSala
       ? (document.body.style.overflow = "hidden")

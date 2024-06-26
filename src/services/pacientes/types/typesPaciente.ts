@@ -9,6 +9,7 @@ import {
 } from "@/components/GestionPacientes/PanelListPacientes/ModalAddServicesPacientes/FormNewServicesPaciente/inputsNewServices/inputsNewServices";
 import { InitialArchive } from "@/components/PacientesData/archivos/formArchive/inputsArchive";
 import { Alergia } from "@/services/alergia/types/typeAlergias";
+import { GetAllCitas } from "@/services/citas/types/typesCitas";
 import { GetAllEtiquetas } from "@/services/etiquetas/types/typesEtiquetas";
 import { CreateHistorialClinica } from "@/services/historial-clinica/types/typesHistorialClinica";
 import { NotaPaciente } from "@/services/notas/types/typesNotas";
@@ -29,7 +30,14 @@ export interface Pacientes extends PacienteMayor {
   recetaMedica: CreateReceta[];
   detallesServicios: HistorialPaciente[];
   detalles: DetallesServicios[];
+  citas: HistoryCitas[];
 }
+
+export type MedicoData = {
+  _id: string;
+  apellidos: string;
+  name: string;
+};
 
 export const enum Estados {
   ENPROCESO = "en proceso",
@@ -51,13 +59,11 @@ export interface DetallesServicios
     _id: string;
     estado_tratamiento: string;
   };
-  medico: {
-    _id: string;
-    apellidos: string;
-    name: string;
-  };
+  medico: MedicoData;
   docClone: boolean;
 }
+
+export interface HistoryCitas extends Omit<GetAllCitas, "pacientes"> {}
 
 export interface HistorialPaciente
   extends Omit<
@@ -65,11 +71,20 @@ export interface HistorialPaciente
     "detalles_servicio" | "apoderado"
   > {}
 
+export interface HistoryReceta extends Omit<CreateReceta, "medico"> {
+  medico: MedicoData;
+}
+export interface HistoryPrescripcione extends Omit<CreatePrescripciones, "medico"> {
+  medico: MedicoData;
+}
+
 // datos para el archivos(file paciente)
-export interface HistoryArchive extends Omit<InitialArchive, "file"> {
+export interface HistoryArchive
+  extends Omit<InitialArchive, "file" | "medico"> {
   url_archivo: string;
   id_url_archivo: string;
   _id: string;
+  medico: MedicoData;
 }
 
 // id para todo los pacientes (url router-dom)

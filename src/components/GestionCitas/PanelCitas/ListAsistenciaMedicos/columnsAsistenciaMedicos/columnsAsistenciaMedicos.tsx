@@ -6,16 +6,17 @@ import {
 import { useCreateAsistencia } from "@/services/asistencia/mutation";
 import { CreateAsistencia } from "@/services/asistencia/types/typeAsistencia";
 import { GetAllMedicos } from "@/services/medicos/types/typesMedicos";
+import { hourNowDate } from "@/utils";
 import Avatar from "antd/es/avatar/avatar";
 import dayjs from "dayjs";
 import { ColumnProps } from "primereact/column";
 import { useState } from "react";
 import { FaUserDoctor } from "react-icons/fa6";
 import HistoryAsistaneciMedicos from "./historyAsistencia/historyAsistaneciMedicos";
-import { hourNowDate } from "@/utils";
+import LoadingStatic from "@/components/Common/Loading/LoadingStatic";
 
 export const ColumnsAsistenciaMedicos = () => {
-  const { mutate } = useCreateAsistencia();
+  const { mutate, isPending } = useCreateAsistencia();
   // este estado es el que contorlara los dias
   // const [nuevaFecha, setNuevaFecha] = useState<string>("");
   // const date = registerDateInternational();
@@ -37,7 +38,7 @@ export const ColumnsAsistenciaMedicos = () => {
     const asistenciaNow = asistencia.find((dates) => dates.fecha === dateNow);
 
     return (
-      <div className="flex flex-1 font-robotoSlab_600 gap-2">
+      <div className="flex flex-1 gap-2 justify-center items-center font-robotoSlab_600">
         <input
           type="date"
           disabled
@@ -47,10 +48,9 @@ export const ColumnsAsistenciaMedicos = () => {
         />
         <Button
           type="button"
-          className={`flex-1 h-[3rem] transition-all rounded shadow-md border hover:rounded-3xl ${
+          className={`flex-[0_1_15rem] h-[3rem] transition-all rounded shadow-md border hover:rounded-3xl ${
             asistenciaNow?.asistio === true && "bg-bg_three/80"
           }`}
-          label="Presente"
           onClick={() =>
             marcarAsistencia({
               _id: asistenciaNow?._id,
@@ -60,7 +60,9 @@ export const ColumnsAsistenciaMedicos = () => {
               hora: hourNow,
             })
           }
-        />
+        >
+          {isPending ? <LoadingStatic /> : "Presente"}
+        </Button>
         <Button
           type="button"
           onClick={() =>
@@ -72,11 +74,12 @@ export const ColumnsAsistenciaMedicos = () => {
               hora: hourNow,
             })
           }
-          className={`flex-1 h-[3rem] transition-all rounded shadow-md border hover:rounded-3xl ${
+          className={`flex-[0_1_15rem] h-[3rem] transition-all rounded shadow-md border hover:rounded-3xl ${
             asistenciaNow?.asistio === false && "bg-bg_seven/70"
           }`}
-          label="Ausente"
-        />
+        >
+          {isPending ? <LoadingStatic /> : "Ausente"}
+        </Button>
       </div>
     );
   };

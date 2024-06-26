@@ -20,7 +20,7 @@ const ModalConfigurationHours = () => {
         {openConfiguration && (
           <Modal
             onClick={setOpenConfiguration}
-            className="flex-[0_1_60rem] flex-col p-8 container justify-start flex min-h-[40vh] border border-border_three/20 shadow-md rounded-md bg-default"
+            className="flex-[0_1_60rem] flex-col p-8 container justify-start flex min-h-[20vh] border border-border_three/20 shadow-md rounded-md bg-default"
             type="CENTER"
             animate="LEFT"
           >
@@ -58,7 +58,7 @@ const ModalConfigurationHours = () => {
                       />
                     ))}
                   </div>
-                  <div className="min-h-[30vh] flex items-end justify-end">
+                  <div className="min-h-[10vh] flex items-end justify-end">
                     {isPending ? (
                       <div className="w-full flex justify-center">
                         <LoadingStatic />

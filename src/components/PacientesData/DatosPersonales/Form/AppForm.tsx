@@ -31,6 +31,7 @@ const AppForm = () => {
     direccion: data?.direccion ?? "",
     distrito: data?.distrito ?? "",
   };
+
   const hanledSubmit = (data: PartialUpdatePaciente) => mutate(data);
 
   return (

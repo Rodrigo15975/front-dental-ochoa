@@ -1,90 +1,87 @@
+import { Modal, Table } from "@/components/Common";
+import { useGetFindOnePaciente } from "@/services/pacientes/queries";
+import { ID } from "@/services/pacientes/types/typesPaciente";
+import { AnimatePresence } from "framer-motion";
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
-import { Timeline } from "primereact/timeline";
-import { Toolbar } from "primereact/toolbar";
-import { IoPrintOutline } from "react-icons/io5";
-import { PiMicrosoftExcelLogoDuotone } from "react-icons/pi";
-import CardHistoryCitas from "./CardHistoryCitas";
-import { CiCircleCheck } from "react-icons/ci";
+import { useEffect, useState } from "react";
+import { BiDetail } from "react-icons/bi";
+import { useParams } from "react-router-dom";
+import ColumnsListCitas from "./columns/columnsCitas";
 
 const HistoryCitas = () => {
-  const startContent = (
-    <div className="flex font-robotoSlab items-center gap-3 ">
-      <Button
-        tooltip="PDF"
-        tooltipOptions={{
-          position: "top",
-        }}
-        icon={<IoPrintOutline className="text-4xl text-red-400" />}
-        className="mr-2 border  shadow-sm border-border_three/50 hover:bg-bg_three"
-      />
-      <Button
-        tooltipOptions={{
-          position: "top",
-        }}
-        tooltip="EXCEL"
-        icon={
-          <PiMicrosoftExcelLogoDuotone className="text-4xl text-green-400" />
-        }
-        className="mr-2 border shadow-sm border-border_three/50 hover:bg-bg_three"
-      />
+  const { id } = useParams<ID>();
+  const { data, isLoading } = useGetFindOnePaciente(id ?? "");
+  const { columns } = ColumnsListCitas();
+  const [openModalHistory, setOpenModalHistory] = useState<boolean>(false);
+  const [globalFilter, setGlobalFilter] = useState<string>("");
+  const openModal = () => setOpenModalHistory(!openModalHistory);
+  const header = (
+    <div className="flex justify-between text-center font-robotoSlab items-center gap-3 ">
       <InputText
-        tooltip="Busqueda por Fecha"
-        className="p-4 rounded-lg flex-[0_1_20rem] focus:bg-bg_six/10 border  border-border_three/20 shadow-sm"
-        placeholder="Search"
-        type="text"
+        type="search"
+        className="rounded-lg shadow-md"
+        tooltip="Busqueda"
+        placeholder="Search..."
+        onInput={(e) => {
+          const target = e.target as HTMLInputElement;
+          setGlobalFilter(target.value.toLocaleLowerCase());
+        }}
       />
+      <Button
+        onClick={openModal}
+        className="flex-[0_1_15rem] flex items-center justify-center text-default shadow-md h-[3rem] bg-bg_six"
+      >
+        Volver
+      </Button>
     </div>
   );
-  const events = [
-    {
-      status: "Ordered",
-      date: "18/10/2024",
-      icon: "pi pi-shopping-cart",
-      color: "#9C27B0",
-      image: "game-controller.jpg",
-    },
-    {
-      status: "Processing",
-      date: "15/10/2020",
-      icon: "pi pi-cog",
-      color: "#673AB7",
-      image: "game-controller.jpg",
-    },
-    {
-      status: "Shipped",
-      date: "15/10/2020",
-      icon: "pi pi-shopping-cart",
-      color: "#FF9800",
-      image: "game-controller.jpg",
-    },
-    {
-      status: "Delivered",
-      date: "16/10/2010",
-      icon: "pi pi-check",
-      color: "#607D8B",
-      image: "game-controller.jpg",
-    },
-  ].reverse();
 
-  const customizedMarker = () => {
-    return (
-      <span className="flex bg-bg_three/80 shadow-lg border items-center gap-2 p-2  align-items-center rounded-full justify-content-center text- border-circle z-1 shadow-1">
-        <CiCircleCheck className="text-3xl" />
-      </span>
-    );
-  };
+  useEffect(() => {
+    openModalHistory
+      ? (document.body.style.overflow = "hidden")
+      : (document.body.style.overflow = "");
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [openModalHistory]);
 
   return (
     <>
-      <Toolbar className="bg-default shadow" start={startContent} />
-      <Timeline
-        value={events}
-        align="bottom"
-        className=" bg-default shadow-sm  font-robotoSlab"
-        marker={customizedMarker}
-        content={CardHistoryCitas}
-      />
+      <Button
+        tooltipOptions={{
+          position: "top",
+        }}
+        onClick={openModal}
+        tooltip="Ver Historial"
+        className="bg-bg_six/50 flex p-4 shadow-md hover:bg-bg_six   gap-2 items-center w-full rounded-md  text-default text-xl"
+      >
+        Detalles
+        <BiDetail className="text-2xl" />
+      </Button>
+      <AnimatePresence>
+        {openModalHistory && (
+          <Modal
+            className="bg-default container border-border_four/50 shadow-md border flex-[0_1_80rem] min-h-[80vh]"
+            type="CENTER"
+            animate="OPACITY"
+          >
+            <div className="max-h-[80vh] overflow-y-auto">
+              <Table
+                columnsConfig={columns}
+                data={data?.citas ?? []}
+                row={8}
+                headerClassName="bg-header-table text-default"
+                className="h-full"
+                loading={isLoading}
+                globalFilter={globalFilter}
+                header={header}
+              />
+            </div>
+          </Modal>
+        )}
+      </AnimatePresence>
     </>
   );
 };

@@ -14,7 +14,6 @@ const ModalListaEspera = () => {
   const { data, isLoading } = useGetAllCitas();
   const { openModalListEspera, setOpenModalListEspera } = storeGestionCitas();
   const [search, setSearch] = useState<string>("");
-
   const header = (
     <>
       <div className="flex flex-col gap-2 align-items-center justify-between">
@@ -47,10 +46,11 @@ const ModalListaEspera = () => {
       </div>
     </>
   );
-  const appointInEspera = data?.filter(
-    (appointments) => appointments.estado.estado === STATUSCITA.EN_ESPERA
-  );
-
+  const appointInEspera = data
+    ?.sort()
+    .filter(
+      (appointments) => appointments.estado.estado === STATUSCITA.EN_ESPERA
+    );
   useEffect(() => {
     openModalListEspera
       ? (document.body.style.overflow = "hidden")
@@ -66,7 +66,7 @@ const ModalListaEspera = () => {
       <AnimatePresence>
         {openModalListEspera && (
           <Modal
-            className="min-h-[80vh] p-8 flex-[0_1_80rem]  bg-default rounded-xl shadow-md border border-border_four/50"
+            className="min-h-[80vh] container p-8 flex-[0_1_80rem]  bg-default rounded-xl shadow-md border border-border_four/50"
             type="CENTER"
             animate="OPACITY"
           >

@@ -16,7 +16,16 @@ function FormularioDeleteConfiguracion() {
     setOpenDeleteConfiguracion();
   };
 
-  if (isPending) return <LoadingStatic />;
+  if (isPending)
+    return (
+      <Modal
+        className="bg-default container flex items-center justify-center border-border_four/50 shadow-md border flex-[0_1_20rem] min-h-[30vh]"
+        type="CENTER"
+        animate="OPACITY"
+      >
+        <LoadingStatic />
+      </Modal>
+    );
 
   return (
     <>

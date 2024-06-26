@@ -2,12 +2,12 @@ import { Button, Modal, Table } from "@/components/Common";
 import { useGetFindOnePaciente } from "@/services/pacientes/queries";
 import { ID } from "@/services/pacientes/types/typesPaciente";
 import storePrescripcion from "@/store/storeDataPacientes/prescripciones/storePrescripcion";
+import { capitalize } from "@/utils";
 import { AnimatePresence } from "framer-motion";
+import { InputText } from "primereact/inputtext";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import columnHistoryReceta from "./column/columnHistoryReceta";
-import { capitalize } from "@/utils";
-import { InputText } from "primereact/inputtext";
 
 const ModalHistoryReceta = () => {
   const [globalFilter, setGlobalFilter] = useState<string>("");
@@ -36,6 +36,7 @@ const ModalHistoryReceta = () => {
         <div className="flex flex-col gap-4 items-center justify-between">
           <div className="flex text-text_six text-xl w-full justify-between">
             <p>Historial de recetas</p>
+
             <p>
               Paciente: {nameUpper} {apellidosUpper}
             </p>
@@ -66,6 +67,7 @@ const ModalHistoryReceta = () => {
       </>
     );
   };
+
   return (
     <>
       <AnimatePresence>
@@ -73,7 +75,7 @@ const ModalHistoryReceta = () => {
           <Modal
             className="flex-[0_1_80rem] min-h-[80vh] rounded-md border-border_four/80 container bg-default border shadow-md "
             type="CENTER"
-            animate="LEFT"
+            animate="OPACITY"
           >
             <div className="max-h-[90vh] p-4 overflow-y-auto">
               <Table

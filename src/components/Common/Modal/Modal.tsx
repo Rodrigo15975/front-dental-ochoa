@@ -21,7 +21,7 @@ const Modal: FC<PropsModal> = ({
     return (
       <m.div
         onClick={onClick}
-        className={`px-[2rem] fixed z-[2000] bg-white/70 inset-0 flex items-center justify-center`}
+        className={`px-[2rem] fixed z-[200] bg-white/70 inset-0 flex items-center justify-center`}
         variants={modalVarianOpacity}
         initial={"initial"}
         exit={"exit"}

@@ -1,11 +1,16 @@
 import { Button } from "@/components/Common";
 import {
+  capitalizeApellido,
+  capitalizeNombre,
+} from "@/components/Common/CapitalicesComponent/CapitalicesComponen";
+import {
   useUpdateStatusCitaConfirmada,
   useUpdateStatusCitaListaSala,
 } from "@/services/citas/mutation";
 import { useGetAllCitas } from "@/services/citas/queries";
 import { GetAllCitas, STATUSCITA } from "@/services/citas/types/typesCitas";
 import storeGestionCitas from "@/store/storeGestionCitas/storeGestionCitas";
+import dayjs from "dayjs";
 
 import { ColumnProps } from "primereact/column";
 import { toast } from "react-toastify";
@@ -20,8 +25,11 @@ const ColumnsListEspera = () => {
 
   const citaConfirmada = useUpdateStatusCitaConfirmada(setOpenModalListEspera);
 
-  const Orden = (rowIndex: number) => {
-    return <>{rowIndex + 1}</>;
+  // poner la hora en vez de la orden
+  const OrdenHora = (data: GetAllCitas) => {
+    const startTime = dayjs(data?.start).format("hh:mm A");
+    const endTime = dayjs(data?.end).format("hh:mm A");
+    return ` ${startTime} - ${endTime}`;
   };
 
   const changeSala = (id: string) => {
@@ -47,27 +55,39 @@ const ColumnsListEspera = () => {
         <Button
           type="button"
           onClick={() => changeCalendarioCita(data._id)}
-          className="flex items-center font-robotoSlab_600 hover:bg-bg_three/40 rounded-md shadow-md justify-center bg-bg_three/80 h-[2.5rem] w-full"
+          className="flex items-center font-robotoSlab_600 p-1 hover:bg-bg_three/40 rounded-md shadow-md justify-center bg-bg_three/80 h-[2.5rem] w-full"
         >
           Volver al calendario
         </Button>
       </div>
     );
   };
+  const fecha = (data: GetAllCitas) => {
+    const startDate = dayjs(data?.start).format("DD/MM/YYYY");
+
+    return <>{startDate}</>;
+  };
 
   const columns: ColumnProps[] = [
     {
       field: "",
-      header: "Orden",
-      body: (_: GetAllCitas, { rowIndex }) => Orden(rowIndex),
+      header: "Hora",
+      body: (data: GetAllCitas) => OrdenHora(data),
+    },
+    {
+      field: "",
+      header: "Fecha",
+      body: (data: GetAllCitas) => fecha(data),
     },
     {
       field: "paciente.name",
       header: "Paciente",
+      body: (data: GetAllCitas) => capitalizeNombre(data.paciente.name),
     },
     {
       field: "paciente.apellidos",
       header: "Apellido",
+      body: (data: GetAllCitas) => capitalizeApellido(data.paciente.apellidos),
     },
     {
       field: "observacion",
@@ -76,10 +96,12 @@ const ColumnsListEspera = () => {
     {
       field: "medico.name",
       header: "Medico",
+      body: (data: GetAllCitas) => capitalizeNombre(data.medico.name),
     },
     {
       field: "medico.apellidos",
       header: "Apellido",
+      body: (data: GetAllCitas) => capitalizeApellido(data.medico.apellidos),
     },
     {
       field: "",

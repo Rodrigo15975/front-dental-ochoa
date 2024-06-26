@@ -2,6 +2,7 @@ import {
   generalValidation,
   messageValidation,
 } from "@/utils/validationsSchemasGeneral";
+import { differenceInYears } from "date-fns";
 import * as Yup from "yup";
 export const validationSchemaMenor = Yup.object().shape({
   dni: Yup.string()
@@ -21,7 +22,21 @@ export const validationSchemaMenor = Yup.object().shape({
     }),
 
   genero: Yup.string().required("Requerido"),
-  fechaNacimiento: Yup.string().required("Requerido"),
+  fechaNacimiento: Yup.string()
+    .required("Requerido")
+    .test(
+      "edad-valida",
+      "La edad debe estar entre 2 y 17 años",
+      function (value) {
+        if (!value) {
+          return false; // La validación de requerido se encarga de esto
+        }
+        const today = new Date();
+        const birthDate = new Date(value);
+        const age = differenceInYears(today, birthDate);
+        return age >= 2 && age <= 17;
+      }
+    ),
 
   apoderado: Yup.object().shape({
     dni: Yup.string()

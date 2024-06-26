@@ -28,7 +28,7 @@ const FormPrescripcion = () => {
   ) => {
     mutate(data);
     helper.resetForm();
-  };
+  };  
 
   return (
     <>

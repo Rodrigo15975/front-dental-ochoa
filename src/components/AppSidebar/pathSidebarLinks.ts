@@ -10,10 +10,12 @@ const enum PathMenuSidebarLinks {
   HISTORIAL_CITAS = "/historial-citas",
   CONFIGURACION = "/configuracion",
   REPORTES = "/reportes",
+  RECORDATORIO = "/recordatorio",
 }
 
 const enum LabelMenuSidebarLinks {
   DASHBOARD = "Dashboard",
+  RECORDATORIO = "Recordatorio",
   GESTIONES_PACIENTES = "Gestión de Pacientes",
   GESTIONES_HORARIOS = "Gestión de Horarios",
   GESTIONES_CITAS = "Gestión de Citas",

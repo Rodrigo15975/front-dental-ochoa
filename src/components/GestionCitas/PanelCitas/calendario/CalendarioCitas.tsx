@@ -52,7 +52,8 @@ const CalendarioCitas = ({ getCita, updateDate, updateForm }: Props) => {
     (appoint) =>
       appoint.estado.estado !== STATUSCITA.EN_ESPERA &&
       appoint.estado.estado !== STATUSCITA.EN_SALA &&
-      appoint.estado.estado !== STATUSCITA.ATENDIDO
+      appoint.estado.estado !== STATUSCITA.ATENDIDO &&
+      appoint.estado.estado !== STATUSCITA.CANCELADO
   );
   if (events.isLoading)
     return (

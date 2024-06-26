@@ -4,7 +4,7 @@ export const enum PathServices {
   LOGIN = "/auth/login",
   LOGOUT = "/auth/logout",
   ACCESSTOKEN = "/auth/verify",
-
+  DETALLE = "/detalle",
   CONSULTORIOFILELOGO = "/consultorio/logo",
   CONSULTORIOFILEPORTADA = "/consultorio/portada",
   CONSULTORIO = "/consultorio",

@@ -100,14 +100,16 @@ const MenuAppointmenCita = ({ data }: Props) => {
               left: styleMenu.x - 80,
               top: styleMenu.y - 80,
               position: "fixed",
-              zIndex: 1000,
+              zIndex: 100,
             }}
           >
             <div className="flex justify-between items-center">
-              <IoCloseCircleOutline
-                className="cursor-pointer"
+              <CommonTooltip
+                title="Cerrar menu"
                 onClick={setOpenMenuAppointment}
-              />
+              >
+                <IoCloseCircleOutline className="cursor-pointer" />
+              </CommonTooltip>
               <div className="flex gap-2">
                 <CommonTooltip
                   className="p-1 bg-rose-500/80 text-default rounded-md cursor-pointer"

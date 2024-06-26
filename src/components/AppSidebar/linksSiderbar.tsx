@@ -5,6 +5,7 @@ import { GrConfigure } from "react-icons/gr";
 import { LuLayoutDashboard } from "react-icons/lu";
 import { MdMedicalServices, MdOutlineAdminPanelSettings } from "react-icons/md";
 import { TbReportSearch } from "react-icons/tb";
+import { FaBirthdayCake } from "react-icons/fa";
 
 //
 import { PropsSidebar } from "../Sidebar/types/typesLinks";
@@ -55,6 +56,11 @@ const linksSidebarBar: PropsSidebar = {
       label: LabelMenuSidebarLinks.CONFIGURACION,
       path: PathMenuSidebarLinks.CONFIGURACION,
       icon: <GrConfigure />,
+    },
+    {
+      label: LabelMenuSidebarLinks.RECORDATORIO,
+      path: PathMenuSidebarLinks.RECORDATORIO,
+      icon: <FaBirthdayCake />,
     },
   ],
 };

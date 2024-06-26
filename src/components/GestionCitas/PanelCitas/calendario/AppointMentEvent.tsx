@@ -21,16 +21,15 @@ export default function AppointMentEvent({ data }: Props) {
         className="h-full rounded-md relative hover:rounded-xl transition-all text-text_primary/80 font-robotoSlab_500 flex flex-col gap-1 p-1 hover:"
       >
         <p className="flex gap-1">
-          Estado:
-          <span className="flex gap-1 items-center text-text_primary font-robotoSlab_700">
+          <span className="flex gap-1 items-center text-text_primary/50 font-robotoSlab_700">
             {estadoUpper} <RiReservedLine />
           </span>
         </p>
         <p className="font-robotoSlab_500">
-          <span>Paciente</span>
           <span className="flex gap-1 font-robotoSlab_600 text-text_primary">
-            {nameUpper} {apellidosUpper} <RiFileUserLine />
+            Paciente: {nameUpper} {apellidosUpper}
           </span>
+          <RiFileUserLine/> 
         </p>
       </m.div>
     </>
