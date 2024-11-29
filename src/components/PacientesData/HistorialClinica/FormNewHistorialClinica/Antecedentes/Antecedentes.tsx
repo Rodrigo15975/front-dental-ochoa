@@ -1,6 +1,6 @@
-import { Input, PropsInputOptional, Typography } from "@/components/Common";
-import { FC } from "react";
-import { inpustNewHistorialClinica } from "../inputsNameNewHistorialClinica";
+import { PropsInputOptional, Typography } from '@/components/Common'
+import { FC } from 'react'
+import { inpustNewHistorialClinica } from '../inputsNameNewHistorialClinica'
 const Antecedentes: FC<PropsInputOptional> = ({ fieldProps }) => {
   return (
     <>
@@ -31,7 +31,7 @@ const Antecedentes: FC<PropsInputOptional> = ({ fieldProps }) => {
         ))}
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Antecedentes;
+export default Antecedentes

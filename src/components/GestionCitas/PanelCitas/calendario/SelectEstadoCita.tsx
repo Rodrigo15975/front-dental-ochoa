@@ -1,9 +1,15 @@
-import { useGetAllEstadosCitas } from "@/services/estado-cita/queries";
-import { useGetServicios } from "@/services/servicios";
+import { useGetAllEstadosCitas } from '@/services/estado-cita/queries'
+import { useGetServicios } from '@/services/servicios'
 
 export const SelectEstadoCita = () => {
-  const { data } = useGetAllEstadosCitas();
-  const reservado = data?.filter((stado) => stado.estado === "reservado");
+  const { data } = useGetAllEstadosCitas()
+  const reservado = data?.filter((stado) => stado.estado === 'reservado')
+  console.log({ estado: data })
+
+  /**
+   * 
+   * @ERROR_CUANDO_SE_LE_HACE_CAMBIO
+   */
   return (
     <>
       <option value="">Seleccione el estado</option>
@@ -18,12 +24,13 @@ export const SelectEstadoCita = () => {
         </option>
       ))}
     </>
-  );
-};
+  )
+}
 
 // creo que setiene que quitar esto creo
 export const SelectServicioCita = () => {
-  const { data } = useGetServicios();
+  const { data } = useGetServicios()
+
   return (
     <>
       <option value="">Seleccione el servicio</option>
@@ -38,8 +45,8 @@ export const SelectServicioCita = () => {
         </option>
       ))}
     </>
-  );
-};
+  )
+}
 
 // export const SelectEstadoEditCit = () => {
 //   const { data } = useGetAllEstadosCitas();

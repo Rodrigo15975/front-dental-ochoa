@@ -1,16 +1,16 @@
-import { FC, ReactNode } from "react";
-import { FaWpforms } from "react-icons/fa6";
+import { FC, ReactNode } from 'react'
+import { FaWpforms } from 'react-icons/fa6'
 
 type PropsButton = {
-  label?: string;
-  type: "button" | "reset" | "submit";
-  btnDefault?: boolean;
-  onClick?: () => void;
-  className?: string;
-  children?: ReactNode;
-  disabled?: boolean;
-  btnStyled?: boolean | "blue";
-};
+  label?: string
+  type: 'button' | 'reset' | 'submit'
+  btnDefault?: boolean
+  onClick?: () => void
+  className?: string
+  children?: ReactNode
+  disabled?: boolean
+  btnStyled?: boolean | 'blue'
+}
 
 const Button: FC<PropsButton> = ({
   className,
@@ -22,7 +22,7 @@ const Button: FC<PropsButton> = ({
   btnDefault,
   btnStyled,
 }) => {
-  if (btnStyled === "blue")
+  if (btnStyled === 'blue')
     return (
       <Button
         type={type}
@@ -33,7 +33,7 @@ const Button: FC<PropsButton> = ({
       >
         <FaWpforms className="text-default text-xl" />
       </Button>
-    );
+    )
 
   if (btnStyled)
     return (
@@ -46,7 +46,7 @@ const Button: FC<PropsButton> = ({
         {children}
         {label}
       </button>
-    );
+    )
 
   if (btnDefault)
     return (
@@ -59,7 +59,7 @@ const Button: FC<PropsButton> = ({
         {children}
         {label}
       </button>
-    );
+    )
 
   return (
     <>
@@ -73,7 +73,7 @@ const Button: FC<PropsButton> = ({
         {label}
       </button>
     </>
-  );
-};
+  )
+}
 
-export default Button;
+export default Button

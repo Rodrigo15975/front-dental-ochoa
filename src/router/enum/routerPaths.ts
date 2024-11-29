@@ -1,11 +1,12 @@
-import { PathMenuSidebarLinks } from "@/components/AppSidebar/pathSidebarLinks";
+import { PathMenuSidebarLinks } from '@/components/AppSidebar/pathSidebarLinks'
 
 // Nombres de las rutas(path)
 export enum PathsPublic {
   // EXAMPLE
-  INICIO = "/",
-  NETWORKERROR = "/network-error",
+  INICIO = '/',
+  NETWORKERROR = '/network-error',
 }
+
 export enum PathsProtected {
   // EXAMPLE
   DASHBOARD = PathMenuSidebarLinks.DASHBOARD,

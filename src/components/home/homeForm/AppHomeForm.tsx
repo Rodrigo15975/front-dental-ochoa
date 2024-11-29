@@ -1,4 +1,4 @@
-import HomeForm from "./Form/HomeForm";
+import HomeForm from './Form/HomeForm'
 
 const AppHomeForm = () => {
   return (
@@ -7,7 +7,7 @@ const AppHomeForm = () => {
         <HomeForm />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default AppHomeForm;
+export default AppHomeForm

@@ -20,6 +20,6 @@ export const labelInputs: InputDefaultNames[] = [
 ];
 
 export const initialValuesFormLogin: LoginAuth = {
-  identifier: "",
-  contraseña: "",
+  identifier: "test@hotmail.com",
+  contraseña: "test",
 };

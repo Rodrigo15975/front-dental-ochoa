@@ -1,6 +1,6 @@
-import { useMethods } from "@/adapters/methods";
-import { PathServices } from "../pathServices";
-import { Message } from "../servicios";
+import { useMethods } from '@/adapters/methods'
+import { PathServices } from '../pathServices'
+import { Message } from '../servicios'
 import {
   CreateCita,
   GetAllCitas,
@@ -11,12 +11,12 @@ import {
   UpdateStatusCitaListaEspera,
   UpdateStatusCitaInSala,
   UpdateStatusCitaAtendida,
-} from "./types/typesCitas";
+} from './types/typesCitas'
 
 export const createCita = async (data: CreateCita) =>
   await useMethods.POST<Message, CreateCita>(`${PathServices.CITAS}`, data, {
     withCredentials: true,
-  });
+  })
 
 export const updateCita = async (data: UpdateCita) =>
   await useMethods.PATCH<UpdateCita>(
@@ -25,7 +25,7 @@ export const updateCita = async (data: UpdateCita) =>
     {
       withCredentials: true,
     }
-  );
+  )
 
 export const deleteCita = async (idCita: string, idPaciente: string) =>
   await useMethods.DELETE<UpdateCita>(
@@ -33,7 +33,7 @@ export const deleteCita = async (idCita: string, idPaciente: string) =>
     {
       withCredentials: true,
     }
-  );
+  )
 
 export const updateChangeDateCita = async (data: UpdateChangeDateCita) =>
   await useMethods.PATCH<UpdateChangeDateCita>(
@@ -42,7 +42,7 @@ export const updateChangeDateCita = async (data: UpdateChangeDateCita) =>
     {
       withCredentials: true,
     }
-  );
+  )
 
 export const updateStatusCitaConfirmada = async (
   data: UpdateStatusCitaConfirmada
@@ -53,7 +53,7 @@ export const updateStatusCitaConfirmada = async (
     {
       withCredentials: true,
     }
-  );
+  )
 export const updateStatusCitaCancelar = async (
   data: UpdateStatusCitaCancelada
 ) =>
@@ -63,7 +63,7 @@ export const updateStatusCitaCancelar = async (
     {
       withCredentials: true,
     }
-  );
+  )
 
 export const updateStatusCitaListaEspera = async (
   data: UpdateStatusCitaListaEspera
@@ -74,7 +74,7 @@ export const updateStatusCitaListaEspera = async (
     {
       withCredentials: true,
     }
-  );
+  )
 
 export const updateStatusCitaListaSala = async (data: UpdateStatusCitaInSala) =>
   await useMethods.PATCH<UpdateStatusCitaInSala>(
@@ -83,7 +83,7 @@ export const updateStatusCitaListaSala = async (data: UpdateStatusCitaInSala) =>
     {
       withCredentials: true,
     }
-  );
+  )
 
 export const updateStatusCitaAtendida = async (
   data: UpdateStatusCitaAtendida
@@ -94,9 +94,9 @@ export const updateStatusCitaAtendida = async (
     {
       withCredentials: true,
     }
-  );
+  )
 
 export const getAllCitas = async () =>
   await useMethods.GET<GetAllCitas[]>(PathServices.CITAS, {
     withCredentials: true,
-  });
+  })

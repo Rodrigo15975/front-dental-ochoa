@@ -1,16 +1,16 @@
-import { Column, ColumnProps } from "primereact/column";
-import { DataTable, DataTableValueArray } from "primereact/datatable";
-import React from "react";
+import { Column, ColumnProps } from 'primereact/column'
+import { DataTable, DataTableValueArray } from 'primereact/datatable'
+import React from 'react'
 
 interface PropsTable<T> {
-  columnsConfig: ColumnProps[];
-  data: T;
-  header: React.JSX.Element;
-  globalFilter: string;
-  className?: string;
-  headerClassName?: string;
-  row?: number;
-  loading?: boolean;
+  columnsConfig: ColumnProps[]
+  data: T
+  header: React.JSX.Element
+  globalFilter: string
+  className?: string
+  headerClassName?: string
+  row?: number
+  loading?: boolean
 }
 
 const Table = <T extends DataTableValueArray | undefined>({
@@ -45,14 +45,14 @@ const Table = <T extends DataTableValueArray | undefined>({
             resizeable
             headerClassName={`${headerClassName}`}
             field={column.field}
-            align={"center"}
+            align={'center'}
             body={column.body}
             header={column.header}
           />
         ))}
       </DataTable>
     </>
-  );
-};
+  )
+}
 
-export default Table;
+export default Table

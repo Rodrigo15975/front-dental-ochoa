@@ -1,26 +1,25 @@
-import storeGetDataRuc from "@/store/storeGetDatRuc/storeGetDataRuc";
-import { useMutation } from "@tanstack/react-query";
-import { getRucData } from "./api";
-import { toast } from "react-toastify";
-import { AxiosError } from "axios";
-import { useNavigate } from "react-router-dom";
-import { PathsPublic } from "@/router/enum/routerPaths";
+import storeGetDataRuc from '@/store/storeGetDatRuc/storeGetDataRuc'
+import { useMutation } from '@tanstack/react-query'
+import { getRucData } from './api'
+import { toast } from 'react-toastify'
+import { AxiosError } from 'axios'
+import { useNavigate } from 'react-router-dom'
+import { PathsPublic } from '@/router/enum/routerPaths'
 
 export const useGetRucData = () => {
-  const navigate = useNavigate();
-  const { updateDataRuc } = storeGetDataRuc();
+  const navigate = useNavigate()
+  const { updateDataRuc } = storeGetDataRuc()
   return useMutation({
     mutationFn: (ruc: string) => getRucData(ruc),
     onError(error) {
       if (error instanceof AxiosError) {
-        if (error.code === "ERR_NETWORK") {
-          navigate(PathsPublic.NETWORKERROR);
-          toast.error("Ocurrio algo inesperado");
+        if (error.code === 'ERR_NETWORK') {
+          navigate(PathsPublic.NETWORKERROR)
+          toast.error('Ocurrio algo inesperado')
         }
       }
-      console.log(error);
+      console.log(error)
     },
-    onMutate() {},
     onSuccess(data) {
       if (
         data.departamento !== undefined &&
@@ -32,17 +31,14 @@ export const useGetRucData = () => {
         data.condicion !== undefined &&
         data.estado !== undefined
       ) {
-        updateDataRuc(data);
-        toast.success("Datos obtenidos", { position: "top-center" });
-        return;
+        updateDataRuc(data)
+        toast.success('Datos obtenidos', { position: 'top-center' })
+        return
       }
-      toast.warn("Sucedio algo inesperado o el RUC está incorrecto", {
-        position: "top-center",
+      toast.warn('Sucedio algo inesperado o el RUC está incorrecto', {
+        position: 'top-center',
         autoClose: 3000,
-      });
+      })
     },
-    onSettled: async (_, error) => {
-      console.log(error);
-    },
-  });
-};
+  })
+}

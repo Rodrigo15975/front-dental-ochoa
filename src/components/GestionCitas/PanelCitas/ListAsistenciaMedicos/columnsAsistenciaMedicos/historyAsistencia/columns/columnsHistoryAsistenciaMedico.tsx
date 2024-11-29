@@ -12,7 +12,7 @@ export const ColumnsHistoryAsistenciaMedicos = () => {
   );
 
   const asistenciasHistorial = (asistencia: GetAllAsistencia) => {
-    const { asistio } = asistencia;
+    const { asistio, } = asistencia;
 
     return (
       <div className="w-full flex">

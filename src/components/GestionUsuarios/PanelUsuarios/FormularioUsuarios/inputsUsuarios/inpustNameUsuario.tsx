@@ -16,13 +16,13 @@ export const inputDefaulstsUsuario: InputDefaulsUsuario[] = [
     type: "date",
   },
   {
-    name: "genero",
+    name: "selectFecha",
     textPlaceHolder: "Genero",
     as: "select",
     Component: <SelectGenero />,
   },
   {
-    name: "email",
+    name: "selectGenero",
     textPlaceHolder: "Correo Electronico",
   },
   { name: "celular", textPlaceHolder: "Teléfono" },

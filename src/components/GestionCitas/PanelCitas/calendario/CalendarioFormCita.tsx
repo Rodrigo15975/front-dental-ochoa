@@ -1,54 +1,53 @@
-import { Button, Modal, Typography } from "@/components/Common";
-import { Form, Formik } from "formik";
-import { AnimatePresence } from "framer-motion";
-import { useEffect } from "react";
-import { FaWpforms } from "react-icons/fa6";
-import { IoArrowBack } from "react-icons/io5";
-import { TbBookmarkEdit } from "react-icons/tb";
-import InputsFormCitas from "./inputs/InputsFormCitas";
+import { Button, Modal, Typography } from '@/components/Common'
+import { Form, Formik } from 'formik'
+import { AnimatePresence } from 'framer-motion'
+import { useEffect } from 'react'
+import { FaWpforms } from 'react-icons/fa6'
+import { IoArrowBack } from 'react-icons/io5'
+import { TbBookmarkEdit } from 'react-icons/tb'
+import InputsFormCitas from './inputs/InputsFormCitas'
 import {
   InitialValuesCitas,
   initialValuesInputsCitas,
-} from "./inputs/inputNamesCitas";
-import { Appointment } from "./types/typeCalendarioCitas";
-import { initialValuesCitasSchema } from "./inputs/validation";
-import { useCreateCita } from "@/services/citas/mutation";
-import LoadingStatic from "@/components/Common/Loading/LoadingStatic";
+} from './inputs/inputNamesCitas'
+import { Appointment } from './types/typeCalendarioCitas'
+import { initialValuesCitasSchema } from './inputs/validation'
+import { useCreateCita } from '@/services/citas/mutation'
+import LoadingStatic from '@/components/Common/Loading/LoadingStatic'
 
 type Props = {
-  appointment: Appointment | undefined;
-  closeAppointment: () => void;
-};
+  appointment: Appointment | undefined
+  closeAppointment: () => void
+}
 
 const CalendarioFormCita = ({ appointment, closeAppointment }: Props) => {
-  const { mutate, isPending } = useCreateCita(closeAppointment);
-
+  const { mutate, isPending } = useCreateCita(closeAppointment)
   const handledSubmit = (data: InitialValuesCitas) =>
     mutate({
       ...data,
-      end: appointment?.end ?? "",
-      start: appointment?.start ?? "",
-    });
+      end: appointment?.end ?? '',
+      start: appointment?.start ?? '',
+    })
 
   useEffect(() => {
-    if (appointment) document.body.style.overflow = "hidden";
-    else document.body.style.overflow = "";
+    if (appointment) document.body.style.overflow = 'hidden'
+    else document.body.style.overflow = ''
 
     return () => {
-      document.body.style.overflow = "";
-    };
-  }, [appointment]);
+      document.body.style.overflow = ''
+    }
+  }, [appointment])
 
   return (
     <>
       <AnimatePresence>
         {appointment && (
           <Modal
-            className="flex-[0_1_35rem]  border-border_three/20 p-8 container min-h-[85vh] bg-default border shadow-lg rounded-3xl"
+            className="flex-[0_1_35rem] border-border_three/20 p-8 container min-h-[77vh] bg-default border shadow-lg rounded-3xl"
             type="CENTER"
             animate="OPACITY"
           >
-            <div className="max-h-[85vh]  overflow-y-auto">
+            <div className="max-h-[95vh]  overflow-y-auto">
               <div className="flex justify-between mb-4 pb-4 items-center gap-2">
                 <Typography
                   className="text-text_eight flex items-center gap-2  text-3xl  font-robotoSlab_600"
@@ -70,12 +69,12 @@ const CalendarioFormCita = ({ appointment, closeAppointment }: Props) => {
                 enableReinitialize
               >
                 {({ getFieldProps }) => (
-                  <Form className="pr-4">
+                  <Form className="px-4">
                     <InputsFormCitas fieldProps={getFieldProps} />
                     {isPending ? (
                       <LoadingStatic />
                     ) : (
-                      <>
+                      <div>
                         <Button
                           type="submit"
                           className="flex mt-8 items-center text-default font-robotoSlab_600 shadow-md hover:bg-bg_nine/50 transition hover:text-text_primary/80 h-[2.5rem] bg-bg_six/80 rounded-full w-full gap-2 justify-center"
@@ -91,7 +90,7 @@ const CalendarioFormCita = ({ appointment, closeAppointment }: Props) => {
                         >
                           <IoArrowBack />
                         </Button>
-                      </>
+                      </div>
                     )}
                   </Form>
                 )}
@@ -101,7 +100,7 @@ const CalendarioFormCita = ({ appointment, closeAppointment }: Props) => {
         )}
       </AnimatePresence>
     </>
-  );
-};
+  )
+}
 
-export default CalendarioFormCita;
+export default CalendarioFormCita
